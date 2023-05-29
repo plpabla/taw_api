@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.Value;
 
+// @Value dodaje gettery i settery
 @JsonSerialize
 @Value
 public class ActivityDto {
