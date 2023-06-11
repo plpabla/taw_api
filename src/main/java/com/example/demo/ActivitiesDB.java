@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 // @Component definiuje, ze to jest bean (zarzadzalny obiekt w kontenerze Spring)
@@ -22,6 +23,16 @@ public class ActivitiesDB {
     public ActivityDto get(int idx)
     {
         return activities.get(idx);
+    }
+
+    public ActivityDto getById(int id)
+    {
+        for(ActivityDto el : activities)
+        {
+            if (el.getId().equals(id)) return el;
+        }
+        return null;
+//        Optional<ActivityDto> res = activities.stream().filter(el -> el.getId().equals(id)).findFirst();
     }
 
     public List<ActivityDto> getAll()

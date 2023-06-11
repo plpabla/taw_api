@@ -13,7 +13,7 @@ import java.util.List;
 public class TestApi {
     @Autowired
     private ActivitiesDB activitiesDB;
-
+    private Integer activityCounter = 1;
     @GetMapping("/ping")
     public String ping()
     {
@@ -24,6 +24,7 @@ public class TestApi {
     produces = MediaType.APPLICATION_JSON_VALUE)
     public void addActivity(@RequestBody ActivityDto activity)
     {
+        activity.setId(activityCounter++);
         activitiesDB.add(activity);
     }
 
@@ -43,11 +44,17 @@ public class TestApi {
         return ResponseEntity.ok(activitiesDB.getAll(prio=prio, name=name));
     }
 
+    // TODO: Change `String id` to `Integer id`
     @GetMapping(value="/list/{id}", consumes = MediaType.APPLICATION_JSON_VALUE,
             produces=MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ActivityDto> activitiesList(@PathVariable(value="id") String id)
     {
-        return ResponseEntity.ok(activitiesDB.get(Integer.valueOf(id)));
+        ActivityDto res = activitiesDB.getById(Integer.valueOf(id));
+        if(res != null) {
+            return ResponseEntity.ok(res);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @DeleteMapping(value= "/clean")
