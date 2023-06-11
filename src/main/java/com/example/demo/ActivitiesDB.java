@@ -29,14 +29,20 @@ public class ActivitiesDB {
         return activities;
     }
 
-    public List<ActivityDto> getAll(Integer prio)
+    public List<ActivityDto> getAll(Integer prio, String name)
     {
-        if(prio==null) return activities;
+        List<ActivityDto> filteredActivities = new ArrayList<>(activities);
+        if(prio!=null) {
+            filteredActivities = activities.stream()
+                    .filter(el -> el.getPrio().equals(prio))
+                    .collect(Collectors.toList());
+        }
 
-        List<ActivityDto> filteredActivities = activities.stream()
-                .filter(el -> el.getPrio().equals(prio))
-                .collect(Collectors.toList());
-
+        if(name!=null) {
+            filteredActivities = filteredActivities.stream()
+                    .filter(el -> el.getName().equals(name))
+                    .collect(Collectors.toList());
+        }
 
         return filteredActivities;
     }

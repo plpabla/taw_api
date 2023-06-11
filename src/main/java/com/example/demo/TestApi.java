@@ -36,9 +36,11 @@ public class TestApi {
 
     @GetMapping(value="/list", consumes = MediaType.APPLICATION_JSON_VALUE,
             produces=MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<ActivityDto>> activitiesListFlt(@Nullable @RequestParam("prio") Integer prio)
+    public ResponseEntity<List<ActivityDto>> activitiesListFlt(
+            @Nullable @RequestParam("prio") Integer prio,
+            @Nullable @RequestParam("name") String name)
     {
-        return ResponseEntity.ok(activitiesDB.getAll(prio=prio));
+        return ResponseEntity.ok(activitiesDB.getAll(prio=prio, name=name));
     }
 
     @GetMapping(value="/list/{id}", consumes = MediaType.APPLICATION_JSON_VALUE,
