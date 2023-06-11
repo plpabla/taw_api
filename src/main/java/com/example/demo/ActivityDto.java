@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Value;
 
 // @Value dodaje gettery i settery
+// Można użyć @Data - zawiera więcej
 @JsonSerialize
 @Value
 public class ActivityDto {

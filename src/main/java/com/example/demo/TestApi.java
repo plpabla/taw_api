@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import org.springframework.lang.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -31,6 +32,13 @@ public class TestApi {
     public ResponseEntity<List<ActivityDto>> activitiesListAll()
     {
         return ResponseEntity.ok(activitiesDB.getAll());
+    }
+
+    @GetMapping(value="/list", consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces=MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<ActivityDto>> activitiesListFlt(@Nullable @RequestParam("prio") Integer prio)
+    {
+        return ResponseEntity.ok(activitiesDB.getAll(prio=prio));
     }
 
     @GetMapping(value="/list/{id}", consumes = MediaType.APPLICATION_JSON_VALUE,
