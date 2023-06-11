@@ -57,6 +57,17 @@ public class TestApi {
         }
     }
 
+    @DeleteMapping(value="/delete/{id}")
+    public ResponseEntity activitiesList(@PathVariable(value="id") Integer id)
+    {
+        boolean res = activitiesDB.clean(id);
+        if (res) {
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     @DeleteMapping(value= "/clean")
     public void deleteAll()
     {

@@ -40,16 +40,15 @@ public class ActivitiesDB {
         return activities;
     }
 
-    public List<ActivityDto> getAll(Integer prio, String name)
-    {
+    public List<ActivityDto> getAll(Integer prio, String name) {
         List<ActivityDto> filteredActivities = new ArrayList<>(activities);
-        if(prio!=null) {
+        if (prio != null) {
             filteredActivities = activities.stream()
                     .filter(el -> el.getPrio().equals(prio))
                     .collect(Collectors.toList());
         }
 
-        if(name!=null) {
+        if (name != null) {
             filteredActivities = filteredActivities.stream()
                     .filter(el -> el.getName().equals(name))
                     .collect(Collectors.toList());
@@ -60,6 +59,11 @@ public class ActivitiesDB {
     public void clean()
     {
         activities.clear();
+    }
+
+    public boolean clean(Integer id)
+    {
+        return activities.removeIf(el -> el.getId()==id);
     }
 
 }
