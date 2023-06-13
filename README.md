@@ -47,3 +47,19 @@ Scenariusz do raportu:
 9. Pobranie wszystkich przedmiotów,
 10. Usunięcie wszystkich przedmiotów,
 11. Pobranie wszystkich przedmiotów.
+
+## Opis
+### API endpoints
+* `zajecia`
+  * `GET` - lista zajęć; możliwe argumenty filtrowania
+    * `id=<int>`
+    * `nazwa=<str>`
+    * `ects=<int>`
+    * `sala=<str>`
+    * `egzamin=<true/false>`
+  * `POST` - dodanie zajęć, wymagane argumenty:
+    * `nazwa=<str>&ects=<int>&sala=<str>&egzamin=<true/false>`
+  * `DELETE` - usunięcie wszystkich zajęć
+* `zajecia/{id}` 
+  * `GET` - pobranie informacji o danym przedmiocie po jego id
+  * `DELETE` - usunięcie danego przedmiotu
