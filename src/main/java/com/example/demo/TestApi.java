@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+// TODO: Rename endpoint - should be resoruce name. Action is defined with a method (GET/POST/DELETE/PUT)
 @RestController
 @RequestMapping("api")
 public class TestApi {
