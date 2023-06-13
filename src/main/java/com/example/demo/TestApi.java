@@ -40,5 +40,35 @@ public class TestApi {
         return ResponseEntity.ok(classesDB.get(name, ects, room, exam));
     }
 
+    /*
+    // TODO: Change `String id` to `Integer id`
+    @GetMapping(value="/list/{id}", consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces=MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<ClassDto> activitiesList(@PathVariable(value="id") String id)
+    {
+        ClassDto res = classesDB.getById(Integer.valueOf(id));
+        if(res != null) {
+            return ResponseEntity.ok(res);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
+    @DeleteMapping(value="/delete/{id}")
+    public ResponseEntity activitiesList(@PathVariable(value="id") Integer id)
+    {
+        boolean res = classesDB.clean(id);
+        if (res) {
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @DeleteMapping(value= "/clean")
+    public void deleteAll()
+    {
+        classesDB.clean();
+    }
+    */
 }
