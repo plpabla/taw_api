@@ -50,7 +50,7 @@ Scenariusz do raportu:
 
 ## Opis
 ### API endpoints
-* `zajecia`
+* `api/zajecia`
   * `GET` - lista zajęć; możliwe argumenty filtrowania
     * `id=<int>`
     * `nazwa=<str>`
@@ -60,6 +60,6 @@ Scenariusz do raportu:
   * `POST` - dodanie zajęć, wymagane argumenty:
     * `nazwa=<str>&ects=<int>&sala=<str>&egzamin=<true/false>`
   * `DELETE` - usunięcie wszystkich zajęć
-* `zajecia/{id}` 
+* `api/zajecia/{id}` 
   * `GET` - pobranie informacji o danym przedmiocie po jego id
   * `DELETE` - usunięcie danego przedmiotu
