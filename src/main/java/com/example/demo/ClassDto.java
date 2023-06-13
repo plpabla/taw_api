@@ -3,31 +3,32 @@ package com.example.demo;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Data;
-import lombok.Value;
 
 // @Value dodaje gettery i settery
 // Można użyć @Data - zawiera więcej
 @JsonSerialize
 @Data
-public class ActivityDto {
+public class ClassDto {
     @JsonProperty("id")
     Integer id;
 
-    @JsonProperty("name")
+    @JsonProperty("nazwa")
     String name;
 
-    // Nazwa jakiej chcemy uzywac w JSONie
-    @JsonProperty("priority")
-    Integer prio;
+    @JsonProperty("ects")
+    Integer ects;
 
-    public ActivityDto() {
-        this.name = "empty";
-        this.prio = 42;
-    }
+    @JsonProperty("sala")
+    String room;
 
-    public ActivityDto(Integer id, String name, Integer prio) {
+    @JsonProperty("egzamin")
+    Boolean isExam;
+
+    public ClassDto(Integer id, String name, Integer ects, String room, Boolean isExam) {
         this.id = id;
         this.name = name;
-        this.prio = prio;
+        this.ects = ects;
+        this.room = room;
+        this.isExam = isExam;
     }
 }

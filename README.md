@@ -52,7 +52,6 @@ Scenariusz do raportu:
 ### API endpoints
 * `api/zajecia`
   * `GET` - lista zajęć; możliwe argumenty filtrowania
-    * `id=<int>`
     * `nazwa=<str>`
     * `ects=<int>`
     * `sala=<str>`

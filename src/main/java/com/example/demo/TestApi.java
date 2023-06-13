@@ -8,70 +8,37 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-// TODO: Rename endpoint - should be resoruce name. Action is defined with a method (GET/POST/DELETE/PUT)
 @RestController
 @RequestMapping("api")
 public class TestApi {
     @Autowired
-    private ActivitiesDB activitiesDB;
-    private Integer activityCounter = 1;
+    private ClassesDB classesDB;
+    private Integer addedItemsCounter = 1;
     @GetMapping("/ping")
     public String ping()
     {
-        return "Kopytko.";
+        return "A skad to to znasz ten endpoint? haker, czy co?";
     }
 
-    @PostMapping(value="/add", consumes = MediaType.APPLICATION_JSON_VALUE,
+    @PostMapping(value="/zajecia", consumes = MediaType.APPLICATION_JSON_VALUE,
     produces = MediaType.APPLICATION_JSON_VALUE)
-    public void addActivity(@RequestBody ActivityDto activity)
+    public void addClass(@RequestBody ClassDto newClass)
     {
-        activity.setId(activityCounter++);
-        activitiesDB.add(activity);
+        newClass.setId(addedItemsCounter++);
+        classesDB.add(newClass);
     }
 
-    @GetMapping(value="/list/all", consumes = MediaType.APPLICATION_JSON_VALUE,
+    @GetMapping(value="/zajecia", consumes = MediaType.APPLICATION_JSON_VALUE,
             produces=MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<ActivityDto>> activitiesListAll()
+    public ResponseEntity<List<ClassDto>> getClasses(
+            @Nullable @RequestParam("nazwa") String name,
+            @Nullable @RequestParam("ects") Integer ects,
+            @Nullable @RequestParam("sala") String room,
+            @Nullable @RequestParam("egzamin") String exam
+            )
     {
-        return ResponseEntity.ok(activitiesDB.getAll());
+        return ResponseEntity.ok(classesDB.get(name, ects, room, exam));
     }
 
-    @GetMapping(value="/list", consumes = MediaType.APPLICATION_JSON_VALUE,
-            produces=MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<ActivityDto>> activitiesListFlt(
-            @Nullable @RequestParam("prio") Integer prio,
-            @Nullable @RequestParam("name") String name)
-    {
-        return ResponseEntity.ok(activitiesDB.getAll(prio=prio, name=name));
-    }
 
-    // TODO: Change `String id` to `Integer id`
-    @GetMapping(value="/list/{id}", consumes = MediaType.APPLICATION_JSON_VALUE,
-            produces=MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<ActivityDto> activitiesList(@PathVariable(value="id") String id)
-    {
-        ActivityDto res = activitiesDB.getById(Integer.valueOf(id));
-        if(res != null) {
-            return ResponseEntity.ok(res);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
-
-    @DeleteMapping(value="/delete/{id}")
-    public ResponseEntity activitiesList(@PathVariable(value="id") Integer id)
-    {
-        boolean res = activitiesDB.clean(id);
-        if (res) {
-            return ResponseEntity.ok().build();
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
-
-    @DeleteMapping(value= "/clean")
-    public void deleteAll()
-    {
-        activitiesDB.clean();
-    }
 }
