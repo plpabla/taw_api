@@ -271,8 +271,7 @@ Body: brak
 Metoda: DELETE
 Adres zasobu: http://localhost:8080/api/zajecia/2
 Nagłówki: Content-Type: application/json
-Request Body:
-{"nazwa":"Metodologie Obiektowe", "ects":2, "sala":"216", "egzamin":"true"}
+Request Body: brak
 
 Odpowiedź:
 HTTP Code: 200 OK
