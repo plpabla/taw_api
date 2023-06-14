@@ -58,8 +58,7 @@ public class TestApi {
         }
     }
 
-    /*
-    @DeleteMapping(value="/delete/{id}")
+    @DeleteMapping(value="/zajecia/{id}")
     public ResponseEntity activitiesList(@PathVariable(value="id") Integer id)
     {
         boolean res = classesDB.clean(id);
@@ -69,7 +68,4 @@ public class TestApi {
             return ResponseEntity.notFound().build();
         }
     }
-
-
-    */
 }
