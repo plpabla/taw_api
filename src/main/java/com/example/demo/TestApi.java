@@ -40,6 +40,12 @@ public class TestApi {
         return ResponseEntity.ok(classesDB.get(name, ects, room, exam));
     }
 
+    @DeleteMapping(value= "/zajecia")
+    public void deleteClasses()
+    {
+        classesDB.clean();
+    }
+
     /*
     // TODO: Change `String id` to `Integer id`
     @GetMapping(value="/list/{id}", consumes = MediaType.APPLICATION_JSON_VALUE,
@@ -65,10 +71,6 @@ public class TestApi {
         }
     }
 
-    @DeleteMapping(value= "/clean")
-    public void deleteAll()
-    {
-        classesDB.clean();
-    }
+
     */
 }
