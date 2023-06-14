@@ -217,11 +217,18 @@ HTTP Code: 200 OK
 Body: 
 [
     {
-        "id": 6,
-        "nazwa": "Technologie Komponentowe i Sieciowe",
-        "ects": 2,
+        "id": 3,
+        "nazwa": "Technologie i Aplikacje Webowe",
+        "ects": 3,
         "sala": "208",
-        "egzamin": true
+        "egzamin": false
+    },
+    {
+        "id": 5,
+        "nazwa": "Zaawansowane Technologie Bazodanowe",
+        "ects": 3,
+        "sala": "208",
+        "egzamin": false
     }
 ]
 ```
