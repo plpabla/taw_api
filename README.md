@@ -62,3 +62,284 @@ Scenariusz do raportu:
 * `api/zajecia/{id}` 
   * `GET` - pobranie informacji o danym przedmiocie po jego id
   * `DELETE` - usunięcie danego przedmiotu
+
+## Raport
+### Wprowadzenie przedmiotów w kolejności
+```
+Metoda: POST
+Adres zasobu: http://localhost:8080/api/zajecia
+Nagłówki: Content-Type: application/json
+Request Body:
+{"nazwa":"Metodologie Obiektowe", "ects":2, "sala":"216", "egzamin":"true"}
+
+Odpowiedź:
+HTTP Code: 200 OK
+Body: brak
+```
+
+Podobnie dla kolejnych request body:
+```
+{"nazwa":"Testowanie Oprogramowania", "ects":1, "sala":"216", "egzamin":"false"}
+{"nazwa":"Technologie i Aplikacje Webowe", "ects":3, "sala":"208", "egzamin":"false"}
+{"nazwa":"Zarządzanie Projektem Informatycznym", "ects":2, "sala":"216", "egzamin":"false"}
+{"nazwa":"Zaawansowane Technologie Bazodanowe", "ects":3, "sala":"208", "egzamin":"false"}
+{"nazwa":"Technologie Komponentowe i Sieciowe", "ects":2, "sala":"208", "egzamin":"true"}
+```
+
+### Pobranie wszystkich przedmiotów
+```
+Metoda: GET
+Adres zasobu: http://localhost:8080/api/zajecia
+Nagłówki: Content-Type: application/json
+Request Body: brak
+
+Odpowiedź:
+HTTP Code: 200 OK
+Body: 
+[
+    {
+        "id": 1,
+        "nazwa": "Metodologie Obiektowe",
+        "ects": 2,
+        "sala": "216",
+        "egzamin": true
+    },
+    {
+        "id": 2,
+        "nazwa": "Testowanie Oprogramowania",
+        "ects": 1,
+        "sala": "216",
+        "egzamin": false
+    },
+    {
+        "id": 3,
+        "nazwa": "Technologie i Aplikacje Webowe",
+        "ects": 3,
+        "sala": "208",
+        "egzamin": false
+    },
+    {
+        "id": 4,
+        "nazwa": "Zarządzanie Projektem Informatycznym",
+        "ects": 2,
+        "sala": "216",
+        "egzamin": false
+    },
+    {
+        "id": 5,
+        "nazwa": "Zaawansowane Technologie Bazodanowe",
+        "ects": 3,
+        "sala": "208",
+        "egzamin": false
+    },
+    {
+        "id": 6,
+        "nazwa": "Technologie Komponentowe i Sieciowe",
+        "ects": 2,
+        "sala": "208",
+        "egzamin": true
+    }
+]
+```
+
+### Pobranie przedmiotów, które mają egzamin
+```
+Metoda: GET
+Adres zasobu: http://localhost:8080/api/zajecia?egzamin=tak
+Nagłówki: Content-Type: application/json
+Request Body: brak
+
+Odpowiedź:
+HTTP Code: 200 OK
+Body: 
+[
+    {
+        "id": 1,
+        "nazwa": "Metodologie Obiektowe",
+        "ects": 2,
+        "sala": "216",
+        "egzamin": true
+    },
+    {
+        "id": 6,
+        "nazwa": "Technologie Komponentowe i Sieciowe",
+        "ects": 2,
+        "sala": "208",
+        "egzamin": true
+    }
+]
+```
+
+### Pobranie przedmiotów, które odbywają się w sali 216
+```
+Metoda: GET
+Adres zasobu: http://localhost:8080/api/zajecia?sala=216
+Nagłówki: Content-Type: application/json
+Request Body: brak
+
+Odpowiedź:
+HTTP Code: 200 OK
+Body: 
+[
+    {
+        "id": 1,
+        "nazwa": "Metodologie Obiektowe",
+        "ects": 2,
+        "sala": "216",
+        "egzamin": true
+    },
+    {
+        "id": 2,
+        "nazwa": "Testowanie Oprogramowania",
+        "ects": 1,
+        "sala": "216",
+        "egzamin": false
+    },
+    {
+        "id": 4,
+        "nazwa": "Zarządzanie Projektem Informatycznym",
+        "ects": 2,
+        "sala": "216",
+        "egzamin": false
+    }
+]
+```
+
+### Pobranie przedmiotów które nie mają egzaminu i odbywają się w sali 208
+```
+Metoda: GET
+Adres zasobu: http://localhost:8080/api/zajecia?egzamin=tak&sala=208
+Nagłówki: Content-Type: application/json
+Request Body: brak
+
+Odpowiedź:
+HTTP Code: 200 OK
+Body: 
+[
+    {
+        "id": 6,
+        "nazwa": "Technologie Komponentowe i Sieciowe",
+        "ects": 2,
+        "sala": "208",
+        "egzamin": true
+    }
+]
+```
+
+### Pobranie przedmiotu o identyfikatorze 3
+```
+Metoda: GET
+Adres zasobu: http://localhost:8080/api/zajecia/3
+Nagłówki: Content-Type: application/json
+Request Body: brak
+
+Odpowiedź:
+HTTP Code: 200 OK
+Body: 
+{
+    "id": 3,
+    "nazwa": "Technologie i Aplikacje Webowe",
+    "ects": 3,
+    "sala": "208",
+    "egzamin": false
+}
+```
+
+### Pobranie przedmiotu o identyfikatorze 15
+```
+Metoda: GET
+Adres zasobu: http://localhost:8080/api/zajecia/15
+Nagłówki: Content-Type: application/json
+Request Body: brak
+
+Odpowiedź:
+HTTP Code: 404 Not found
+Body: brak
+```
+
+### Usunięcie przedmiotu o identyfikatorze 2
+```
+Metoda: DELETE
+Adres zasobu: http://localhost:8080/api/zajecia/2
+Nagłówki: Content-Type: application/json
+Request Body:
+{"nazwa":"Metodologie Obiektowe", "ects":2, "sala":"216", "egzamin":"true"}
+
+Odpowiedź:
+HTTP Code: 200 OK
+Body: brak
+```
+
+### Pobranie wszystkich przedmiotów
+```
+Metoda: GET
+Adres zasobu: http://localhost:8080/api/zajecia
+Nagłówki: Content-Type: application/json
+Request Body: brak
+
+Odpowiedź:
+HTTP Code: 200 OK
+Body: 
+[
+    {
+        "id": 1,
+        "nazwa": "Metodologie Obiektowe",
+        "ects": 2,
+        "sala": "216",
+        "egzamin": true
+    },
+    {
+        "id": 3,
+        "nazwa": "Technologie i Aplikacje Webowe",
+        "ects": 3,
+        "sala": "208",
+        "egzamin": false
+    },
+    {
+        "id": 4,
+        "nazwa": "Zarządzanie Projektem Informatycznym",
+        "ects": 2,
+        "sala": "216",
+        "egzamin": false
+    },
+    {
+        "id": 5,
+        "nazwa": "Zaawansowane Technologie Bazodanowe",
+        "ects": 3,
+        "sala": "208",
+        "egzamin": false
+    },
+    {
+        "id": 6,
+        "nazwa": "Technologie Komponentowe i Sieciowe",
+        "ects": 2,
+        "sala": "208",
+        "egzamin": true
+    }
+]
+```
+
+### Usunięcie wszystkich przedmiotów
+```
+Metoda: DELETE
+Adres zasobu: http://localhost:8080/api/zajecia
+Nagłówki: Content-Type: application/json
+Request Body: brak
+
+Odpowiedź:
+HTTP Code: 200 OK
+Body: brak
+```
+
+### Pobranie wszystkich przedmiotów
+```
+Metoda: GET
+Adres zasobu: http://localhost:8080/api/zajecia
+Nagłówki: Content-Type: application/json
+Request Body: brak
+
+Odpowiedź:
+HTTP Code: 200 OK
+Body: 
+[]
+```
