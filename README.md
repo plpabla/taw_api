@@ -51,14 +51,14 @@ Scenariusz do raportu:
 ## Opis
 ### API endpoints
 * `api/zajecia`
-  * `GET` - lista zajęć; możliwe argumenty filtrowania
+  * [x] `GET` - lista zajęć; możliwe argumenty filtrowania
     * `nazwa=<str>`
     * `ects=<int>`
     * `sala=<str>`
     * `egzamin=<true/false>`
-  * `POST` - dodanie zajęć, wymagane argumenty:
+  * [x] `POST` - dodanie zajęć, wymagane argumenty:
     * `nazwa=<str>&ects=<int>&sala=<str>&egzamin=<true/false>`
-  * `DELETE` - usunięcie wszystkich zajęć
+  * [ ] `DELETE` - usunięcie wszystkich zajęć
 * `api/zajecia/{id}` 
-  * `GET` - pobranie informacji o danym przedmiocie po jego id
-  * `DELETE` - usunięcie danego przedmiotu
+  * [ ] `GET` - pobranie informacji o danym przedmiocie po jego id
+  * [ ] `DELETE` - usunięcie danego przedmiotu
