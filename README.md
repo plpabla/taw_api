@@ -58,7 +58,7 @@ Scenariusz do raportu:
     * `egzamin=<true/false>`
   * [x] `POST` - dodanie zajęć, wymagane argumenty:
     * `nazwa=<str>&ects=<int>&sala=<str>&egzamin=<true/false>`
-  * [ ] `DELETE` - usunięcie wszystkich zajęć
+  * [ ] `DELETE` - usunięcie wszystkich zajęć 
 * `api/zajecia/{id}` 
   * [ ] `GET` - pobranie informacji o danym przedmiocie po jego id
   * [ ] `DELETE` - usunięcie danego przedmiotu
