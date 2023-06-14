@@ -46,9 +46,7 @@ public class TestApi {
         classesDB.clean();
     }
 
-    /*
-    // TODO: Change `String id` to `Integer id`
-    @GetMapping(value="/list/{id}", consumes = MediaType.APPLICATION_JSON_VALUE,
+    @GetMapping(value="/zajecia/{id}", consumes = MediaType.APPLICATION_JSON_VALUE,
             produces=MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ClassDto> activitiesList(@PathVariable(value="id") String id)
     {
@@ -60,6 +58,7 @@ public class TestApi {
         }
     }
 
+    /*
     @DeleteMapping(value="/delete/{id}")
     public ResponseEntity activitiesList(@PathVariable(value="id") Integer id)
     {
